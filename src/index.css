@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Silicon Solar Solutions Design System
+   Color Palette: Solar Yellow, Eco Green, Dark Charcoal
+   All colors are HSL for proper theming
+*/
+
+@layer base {
+  :root {
+    /* Solar Yellow - Primary brand color from logo */
+    --primary: 47 95% 52%;
+    --primary-foreground: 240 10% 10%;
+
+    /* Backgrounds */
+    --background: 0 0% 98%;
+    --foreground: 240 10% 10%;
+
+    /* Cards */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+
+    /* Solar Green - Eco-friendly accent */
+    --secondary: 142 71% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted backgrounds */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent - Light green tint */
+    --accent: 142 76% 95%;
+    --accent-foreground: 142 71% 35%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 47 95% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom Solar tokens */
+    --solar-yellow: 47 95% 52%;
+    --solar-green: 142 71% 45%;
+    --solar-dark: 240 33% 14%;
+    --solar-charcoal: 240 10% 10%;
+    --solar-light: 220 14% 96%;
+    --solar-warm-white: 0 0% 98%;
+
+    /* Gradients */
+    --gradient-solar: linear-gradient(135deg, hsl(47 95% 52%) 0%, hsl(42 100% 45%) 100%);
+    --gradient-eco: linear-gradient(135deg, hsl(142 71% 45%) 0%, hsl(142 76% 36%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(240 33% 14%) 0%, hsl(240 33% 8%) 100%);
+
+    /* Shadows */
+    --shadow-solar: 0 10px 40px -10px hsl(47 95% 52% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(240 10% 10% / 0.1);
+    --shadow-elevated: 0 20px 50px -15px hsl(240 10% 10% / 0.15);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 47 95% 52%;
+    --sidebar-primary-foreground: 240 10% 10%;
+    --sidebar-accent: 142 76% 95%;
+    --sidebar-accent-foreground: 142 71% 35%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 47 95% 52%;
+  }
+
+  .dark {
+    /* Dark mode - Solar Dark theme */
+    --background: 240 33% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 33% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 33% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 47 95% 52%;
+    --primary-foreground: 240 10% 10%;
+
+    --secondary: 142 71% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 20% 18%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 240 20% 18%;
+    --accent-foreground: 47 95% 52%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 47 95% 52%;
+
+    --sidebar-background: 240 33% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 47 95% 52%;
+    --sidebar-primary-foreground: 240 10% 10%;
+    --sidebar-accent: 240 20% 18%;
+    --sidebar-accent-foreground: 47 95% 52%;
+    --sidebar-border: 240 20% 20%;
+    --sidebar-ring: 47 95% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /* Custom utility classes */
+  .text-gradient-solar {
+    background: linear-gradient(135deg, hsl(var(--solar-yellow)) 0%, hsl(42 100% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-solar {
+    background: linear-gradient(135deg, hsl(var(--solar-yellow)) 0%, hsl(42 100% 45%) 100%);
+  }
+
+  .bg-gradient-eco {
+    background: linear-gradient(135deg, hsl(var(--solar-green)) 0%, hsl(142 76% 36%) 100%);
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(180deg, hsl(var(--solar-dark)) 0%, hsl(240 33% 8%) 100%);
+  }
+
+  .shadow-solar {
+    box-shadow: var(--shadow-solar);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Animation utilities */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px hsl(var(--solar-yellow) / 0.4);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--solar-yellow) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--solar-yellow) / 0.5);
+  }
+}

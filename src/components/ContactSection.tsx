@@ -222,12 +222,6 @@ Please contact me to schedule the inspection.`;
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={(e) => {
-                      if (link.href !== "#") {
-                        e.preventDefault();
-                        window.open(link.href, "_blank", "noopener,noreferrer");
-                      }
-                    }}
                     className="w-11 h-11 rounded-full bg-card flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all"
                     aria-label={link.name}
                   >

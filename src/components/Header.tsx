@@ -129,30 +129,63 @@ export function Header() {
 
       {/* Mobile Menu - Full Screen Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-28 z-[100] bg-[#0f172a] animate-slide-in-right">
-          <nav className="container mx-auto px-6 py-8 flex flex-col gap-3 h-full overflow-y-auto">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-left py-4 px-5 text-white font-semibold text-lg hover:bg-white/10 rounded-lg transition-all border border-transparent hover:border-primary/30"
+        <div className="md:hidden fixed inset-0 z-[100] bg-[#0f172a] animate-slide-in-right overflow-y-auto">
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
+            <div className="flex items-center gap-3">
+              <img
+                src={logo}
+                alt="Silicon Solar Solutions"
+                className="h-12 w-auto object-contain"
+              />
+              <span className="font-bold text-lg text-white">
+                Silicon Solar
+              </span>
+            </div>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Content */}
+          <nav className="px-6 py-8 flex flex-col h-[calc(100%-88px)]">
+            {/* Navigation Links */}
+            <div className="flex flex-col gap-2 mb-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-left py-4 px-4 text-white font-medium text-base hover:bg-white/10 rounded-lg transition-all border border-transparent hover:border-primary/30"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+
+            {/* CTA Buttons Section */}
+            <div className="mt-auto space-y-4 pb-6">
+              {/* Primary CTA */}
+              <Button
+                onClick={() => scrollToSection("#contact")}
+                className="w-full bg-primary text-primary-foreground py-6 text-base font-semibold hover:bg-primary/90 shadow-lg"
               >
-                {link.label}
-              </button>
-            ))}
-            <div className="pt-6 border-t border-white/20 mt-4 flex flex-col gap-4">
-              <a href="tel:+917892388978" className="w-full">
-                <Button variant="outline" className="w-full gap-2 py-6 text-base border-white/30 text-white hover:bg-white/10 hover:text-white">
+                Get Free Inspection
+              </Button>
+
+              {/* Secondary CTA - Phone */}
+              <a href="tel:+917892388978" className="w-full block">
+                <Button
+                  variant="outline"
+                  className="w-full gap-2 py-5 text-base border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
+                >
                   <Phone className="h-5 w-5" />
                   +91 78923 88978
                 </Button>
               </a>
-              <Button
-                onClick={() => scrollToSection("#contact")}
-                className="w-full bg-primary text-primary-foreground py-6 text-base hover:bg-primary/90 shadow-lg"
-              >
-                Get Free Inspection
-              </Button>
             </div>
           </nav>
         </div>

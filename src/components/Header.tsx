@@ -152,14 +152,14 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Content */}
-          <nav className="px-6 py-8 flex flex-col h-[calc(100%-88px)]">
+          <nav className="px-6 py-8 flex flex-col h-[calc(100%-88px)] pointer-events-auto">
             {/* Navigation Links */}
             <div className="flex flex-col gap-2 mb-8">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-left py-4 px-4 text-white font-medium text-base hover:bg-white/10 rounded-lg transition-all border border-transparent hover:border-primary/30"
+                  className="text-left py-4 px-4 text-white font-medium text-base hover:bg-white/10 rounded-lg transition-all border border-transparent hover:border-primary/30 cursor-pointer pointer-events-auto"
                 >
                   {link.label}
                 </button>
@@ -171,20 +171,19 @@ export function Header() {
               {/* Primary CTA */}
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="w-full bg-primary text-primary-foreground py-6 text-base font-semibold hover:bg-primary/90 shadow-lg"
+                className="w-full bg-primary text-primary-foreground py-6 text-base font-semibold hover:bg-primary/90 shadow-lg pointer-events-auto"
               >
                 Get Free Inspection
               </Button>
 
               {/* Secondary CTA - Phone */}
-              <a href="tel:+917892388978" className="w-full block">
-                <Button
-                  variant="outline"
-                  className="w-full gap-2 py-5 text-base border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
+              <a href="tel:+917892388978" className="w-full block pointer-events-auto">
+                <button
+                  className="w-full flex items-center justify-center gap-2 py-5 px-4 text-base border border-white/30 text-white bg-transparent hover:bg-white/10 hover:border-white/50 rounded-lg transition-all cursor-pointer"
                 >
                   <Phone className="h-5 w-5" />
                   +91 78923 88978
-                </Button>
+                </button>
               </a>
             </div>
           </nav>

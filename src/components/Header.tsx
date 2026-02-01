@@ -34,6 +34,18 @@ export function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Disable body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
@@ -115,29 +127,29 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full Screen Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border animate-slide-in-right">
-          <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
+        <div className="md:hidden fixed inset-0 top-28 z-[100] bg-[#0f172a] animate-slide-in-right">
+          <nav className="container mx-auto px-6 py-8 flex flex-col gap-3 h-full overflow-y-auto">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-left py-3 px-4 text-foreground font-medium hover:bg-muted rounded-lg transition-colors"
+                className="text-left py-4 px-5 text-white font-semibold text-lg hover:bg-white/10 rounded-lg transition-all border border-transparent hover:border-primary/30"
               >
                 {link.label}
               </button>
             ))}
-            <div className="pt-4 border-t border-border mt-2 flex flex-col gap-3">
+            <div className="pt-6 border-t border-white/20 mt-4 flex flex-col gap-4">
               <a href="tel:+917892388978" className="w-full">
-                <Button variant="outline" className="w-full gap-2">
-                  <Phone className="h-4 w-4" />
+                <Button variant="outline" className="w-full gap-2 py-6 text-base border-white/30 text-white hover:bg-white/10 hover:text-white">
+                  <Phone className="h-5 w-5" />
                   +91 78923 88978
                 </Button>
               </a>
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="w-full bg-primary text-primary-foreground"
+                className="w-full bg-primary text-primary-foreground py-6 text-base hover:bg-primary/90 shadow-lg"
               >
                 Get Free Inspection
               </Button>
